@@ -1,0 +1,19 @@
+{
+    "name": "jeremielbaz.fr",
+    "authors": [
+        {
+            "name": "Jeremie Elbaz",
+            "email": "jeremie-e@hotmail.fr"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "App\\": "core",
+            "DB\\": "db"
+        }
+    },
+    "require": {
+        "swiftmailer/swiftmailer" : "5.4.2",
+        "robmorgan/phinx" : "0.6.2"
+    }
+}

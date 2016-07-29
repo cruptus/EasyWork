@@ -1,0 +1,34 @@
+#!/usr/bin/env php
+<?php
+require __DIR__.'/vendor/autoload.php';
+use DB\Core\Color;
+
+
+$color = new Color();
+
+echo "\n";
+if(isset($argv[1])){
+    if($argv[1] === 'migrate' || $argv[1] === 'drop'){
+        if(count($argv) != 4){
+            $color->getColoredString("Utilisation : database migrate [user] [password]", 'red',2);
+            die();
+        }
+        $app = new \DB\Core\App($argv[1], $argv[2], $argv[3]);
+        die();
+    }elseif($argv[1] === 'file'){
+        if(count($argv) != 4){
+            $color->getColoredString("Utilisation : database file [action] [table]", 'red',2);
+            die();
+        }
+        $file = new \DB\Core\MigrationFile($argv[2], $argv[3]);
+        die();
+    }
+}
+    $color->getColoredString("Utilisation : ", 'yellow');
+    $color->getColoredString("migrate [user] [password]", 'green', 0);
+    $color->getColoredString(" - Permet de migrer la database", 'grey', 1);
+    $color->getColoredString("drop    [user] [password]", 'green', 0);
+    $color->getColoredString(" - Permet de supprimer la database", 'grey', 1);
+    $color->getColoredString("file    [name]           ", 'green', 0);
+    $color->getColoredString(" - Permet de creer une migration", 'grey', 2);
+    die();
